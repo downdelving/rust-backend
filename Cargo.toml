@@ -1,0 +1,39 @@
+[package]
+name = "downdelving-backend"
+version = "0.0.1"
+edition = "2021"
+authors = ["Nathan Douglas <github@darkdell.net>"]
+license = "Unlicense"
+homepage = "https://downdelving.github.io/rust-backend/"
+repository = "https://github.com/downdelving/rust-backend/"
+documentation = "https://downdelving.github.io/rust-backend/"
+readme = "README.md"
+keywords = ["downdelving"]
+default-run = "downdelving"
+
+[lib]
+name = "downdelving"
+path = "src/lib.rs"
+
+[[bin]]
+name = "downdelving"
+path = "src/main.rs"
+
+[dependencies]
+actix-web = "4.5.1"
+all_asserts = "2.3.1"
+anyhow = { version = "1.0.81", features = ["backtrace"] }
+derivative = "2.2.0"
+derive_builder = "0.20.0"
+derive_more = "0.99.17"
+log = "0.4.21"
+mockall = "0.12.1"
+pretty_env_logger = "0.5.0"
+regex = "1.10.3"
+serde = { version = "1.0.197", features = ["derive"] }
+serde_json = "1.0.114"
+serde_yaml = "0.9.32"
+simplelog = "0.12.2"
+strum = { version = "0.26.2", features = ["derive"] }
+thiserror = "1.0.58"
+uuid = { version = "1.7.0", features = ["v4", "fast-rng"] }
