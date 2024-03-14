@@ -18,6 +18,12 @@ impl PasswordHasher for ReversePasswordHasher {
   }
 }
 
+impl Default for ReversePasswordHasher {
+  fn default() -> Self {
+    ReversePasswordHasher::new()
+  }
+}
+
 mod tests {
   use super::*;
   use crate::test::init as test_init;
@@ -33,13 +39,13 @@ mod tests {
   fn test_check_password() {
     test_init();
     let hasher = ReversePasswordHasher::new();
-    assert_eq!(hasher.check_password("password", "drowssap").unwrap(), true);
+    assert!(hasher.check_password("password", "drowssap").unwrap());
   }
 
   #[test]
   fn test_check_password_fail() {
     test_init();
     let hasher = ReversePasswordHasher::new();
-    assert_eq!(hasher.check_password("password", "drowssap1").unwrap(), false);
+    assert!(!hasher.check_password("password", "drowssap1").unwrap());
   }
 }

@@ -25,6 +25,6 @@ mod tests {
       hashed_password: "password".to_string(),
       email: Some("email".to_string()),
     };
-    assert_eq!(validator.validate_account(&account).unwrap(), ());
+    assert!(validator.validate_account(&account).is_ok());
   }
 }
