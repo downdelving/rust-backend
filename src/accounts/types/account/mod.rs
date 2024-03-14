@@ -1,3 +1,4 @@
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct Account {
   // UUID.
   pub id: String,
