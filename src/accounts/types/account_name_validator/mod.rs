@@ -79,6 +79,9 @@ mod tests {
     validate_account_test("usernamename", true, None);
     validate_account_test("username_name", true, None);
     validate_account_test("username name", false, Some("Username contains invalid characters"));
+    validate_account_test("username`name", false, Some("Username contains invalid characters"));
+    validate_account_test("username?name", false, Some("Username contains invalid characters"));
+    validate_account_test("username'name", false, Some("Username contains invalid characters"));
     validate_account_test("us", false, Some("Username is too short"));
     validate_account_test("usernameusernameusername", false, Some("Username is too long"));
   }
