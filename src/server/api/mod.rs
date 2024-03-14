@@ -1,21 +1,7 @@
-use actix_web::{get, web::scope, HttpResponse, Responder, Scope};
+use actix_web::{web::scope, Scope};
 
-// "/api".
-#[get("")]
-async fn empty() -> impl Responder {
-  HttpResponse::Ok().body("/api")
-}
-
-// "/api/".
-#[get("/")]
-async fn index() -> impl Responder {
-  HttpResponse::Ok().body("/api/")
-}
+pub mod account;
 
 pub fn api() -> Scope {
-  scope("/api").service(empty).service(index)
-}
-
-pub mod prelude {
-  pub use super::api;
+  scope("/api").service(account::account())
 }

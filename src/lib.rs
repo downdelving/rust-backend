@@ -27,10 +27,11 @@ extern crate strum;
 #[macro_use]
 extern crate thiserror;
 
+pub mod accounts;
 pub mod server;
 
 pub mod prelude {
-  pub use crate::server::prelude::*;
+  pub use crate::server::server;
 }
 
 #[cfg(test)]

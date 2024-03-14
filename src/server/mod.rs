@@ -11,8 +11,3 @@ async fn root() -> impl Responder {
 pub fn server() -> Scope {
   scope("").service(root).service(api::api())
 }
-
-pub mod prelude {
-  pub use super::api::prelude::*;
-  pub use super::server;
-}
