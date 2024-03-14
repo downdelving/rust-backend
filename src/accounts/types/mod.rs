@@ -6,4 +6,5 @@ pub mod id_validator;
 pub mod name_validator;
 pub mod nand_validator;
 pub mod or_validator;
+pub mod password_validator;
 pub mod xor_validator;
