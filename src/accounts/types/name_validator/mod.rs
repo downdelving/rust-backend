@@ -4,7 +4,7 @@ use anyhow::anyhow;
 use anyhow::Error as AnyError;
 use regex::Regex;
 
-pub struct AccountNameValidator {
+pub struct NameValidator {
   pub min_length: usize,
   pub max_length: usize,
   pub regex: Regex,
@@ -14,12 +14,12 @@ const DEFAULT_MIN_LENGTH: usize = 3;
 const DEFAULT_MAX_LENGTH: usize = 20;
 const DEFAULT_REGEX: &str = r"^[a-zA-Z0-9_]+$";
 
-impl AccountNameValidator {
-  pub fn new() -> AccountNameValidator {
+impl NameValidator {
+  pub fn new() -> NameValidator {
     let min_length = DEFAULT_MIN_LENGTH;
     let max_length = DEFAULT_MAX_LENGTH;
     let regex = Regex::new(DEFAULT_REGEX).unwrap();
-    AccountNameValidator {
+    NameValidator {
       min_length,
       max_length,
       regex,
@@ -27,13 +27,13 @@ impl AccountNameValidator {
   }
 }
 
-impl Default for AccountNameValidator {
+impl Default for NameValidator {
   fn default() -> Self {
     Self::new()
   }
 }
 
-impl Validator for AccountNameValidator {
+impl Validator for NameValidator {
   fn validate_account(&self, account: &Account) -> Result<(), AnyError> {
     if account.username.len() < self.min_length {
       return Err(anyhow!("Username is too short"));
@@ -56,7 +56,7 @@ mod tests {
 
   fn validate_account_test(username: &str, expected_ok: bool, expected_err: Option<&str>) {
     test_init();
-    let validator = AccountNameValidator::new();
+    let validator = NameValidator::new();
     let account = Account {
       id: "id".to_string(),
       username: username.to_string(),

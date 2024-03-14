@@ -4,27 +4,27 @@ use anyhow::anyhow;
 use anyhow::Error as AnyError;
 use regex::Regex;
 
-pub struct AccountIdValidator {
+pub struct IdValidator {
   pub regex: Regex,
 }
 
 // Regex for verifying UUID format.
 const DEFAULT_REGEX: &str = r"^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$";
 
-impl AccountIdValidator {
-  pub fn new() -> AccountIdValidator {
+impl IdValidator {
+  pub fn new() -> IdValidator {
     let regex = Regex::new(DEFAULT_REGEX).unwrap();
-    AccountIdValidator { regex }
+    IdValidator { regex }
   }
 }
 
-impl Default for AccountIdValidator {
+impl Default for IdValidator {
   fn default() -> Self {
     Self::new()
   }
 }
 
-impl Validator for AccountIdValidator {
+impl Validator for IdValidator {
   fn validate_account(&self, account: &Account) -> Result<(), AnyError> {
     if account.id.len() != 36 {
       return Err(anyhow!("Account ID is not 36 characters long"));
@@ -44,7 +44,7 @@ mod tests {
 
   fn validate_account_test(id: &str, expected_ok: bool, expected_err: Option<&str>) {
     test_init();
-    let validator = AccountIdValidator::new();
+    let validator = IdValidator::new();
     let account = Account {
       id: id.to_string(),
       username: "username".to_string(),
