@@ -28,9 +28,11 @@ extern crate strum;
 extern crate thiserror;
 
 pub mod accounts;
+pub mod game_state;
 pub mod server;
 
 pub mod prelude {
+  pub use crate::game_state::GameState;
   pub use crate::server::server;
 }
 

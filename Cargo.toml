@@ -20,6 +20,7 @@ name = "downdelving"
 path = "src/main.rs"
 
 [dependencies]
+actix = "0.13.3"
 actix-web = "4.5.1"
 all_asserts = "2.3.1"
 anyhow = { version = "1.0.81", features = ["backtrace"] }
@@ -28,6 +29,7 @@ derivative = "2.2.0"
 derive_builder = "0.20.0"
 derive_more = "0.99.17"
 email_address = "0.2.4"
+futures = "0.3.30"
 log = "0.4.21"
 mockall = "0.12.1"
 pretty_env_logger = "0.5.0"

@@ -3,6 +3,7 @@ pub mod and_validator;
 pub mod bcrypt_password_hasher;
 pub mod email_validator;
 pub mod id_validator;
+pub mod in_memory_storage;
 pub mod mediated_storage;
 pub mod name_validator;
 pub mod nand_validator;
